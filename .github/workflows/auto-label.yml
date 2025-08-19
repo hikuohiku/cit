@@ -1,0 +1,67 @@
+name: Auto Label
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+  issues:
+    types: [opened, edited]
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto label based on content
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const number = context.issue.number;
+            
+            // Get the content to analyze
+            let content = '';
+            let labels = [];
+            
+            if (context.eventName === 'pull_request') {
+              content = context.payload.pull_request.title + ' ' + (context.payload.pull_request.body || '');
+            } else {
+              content = context.payload.issue.title + ' ' + (context.payload.issue.body || '');
+            }
+            
+            const lowerContent = content.toLowerCase();
+            
+            // Auto-label based on keywords
+            if (lowerContent.includes('bug') || lowerContent.includes('error') || lowerContent.includes('fix')) {
+              labels.push('bug');
+            }
+            if (lowerContent.includes('feature') || lowerContent.includes('add') || lowerContent.includes('new')) {
+              labels.push('enhancement');
+            }
+            if (lowerContent.includes('doc') || lowerContent.includes('readme')) {
+              labels.push('documentation');
+            }
+            if (lowerContent.includes('test') || lowerContent.includes('spec')) {
+              labels.push('test');
+            }
+            if (lowerContent.includes('refactor') || lowerContent.includes('cleanup')) {
+              labels.push('refactor');
+            }
+            if (lowerContent.includes('security')) {
+              labels.push('security');
+            }
+            if (lowerContent.includes('performance') || lowerContent.includes('optimize')) {
+              labels.push('performance');
+            }
+            
+            // Apply labels if any were found
+            if (labels.length > 0) {
+              await github.rest.issues.addLabels({
+                owner,
+                repo,
+                issue_number: number,
+                labels
+              });
+            }
