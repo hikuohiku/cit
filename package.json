@@ -1,0 +1,19 @@
+{
+  "name": "cit",
+  "version": "1.0.0",
+  "description": "GitHub operations and Claude Code integration tools",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "echo 'No linter configured yet'",
+    "type-check": "echo 'No TypeScript configured yet'",
+    "test": "echo 'No tests configured yet'"
+  },
+  "keywords": ["github", "claude-code", "automation"],
+  "author": "hikuohiku",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.0.0"
+  }
+}
