@@ -28,7 +28,7 @@
 **用途**: Claude Code への作業指示  
 **ラベル**: `claude-task`  
 **含まれる項目**:
-- Claude Codeへの具体的指示（`/claude [指示内容]`）
+- Claude Codeへの具体的指示（`@claude [指示内容]`）
 - 背景・目的
 - 期待する成果
 - 制約・注意事項
