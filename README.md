@@ -6,37 +6,28 @@ GitHub運用とClaude Code連携のためのリポジトリです。
 
 このリポジトリは Claude Code GitHub App と連携して、イシューやプルリクエストから直接 Claude Code に指示を出すことができます。
 
-### 初期設定
-
-1. **Claude Code GitHub App をインストール**:
-   ```bash
-   /install-github-app
-   ```
-
-2. **リポジトリでの設定完了後、以下の方法でClaude Codeを利用**
-
 ### 使用方法
 
 #### イシューから指示を出す
 
 1. 「Claude Code タスク」テンプレートでイシューを作成
-2. イシューの本文に `/claude [指示内容]` を記載
+2. イシューの本文に `@claude [指示内容]` を記載
 3. 自動的にClaude Codeが実行され、PRが作成されます
 
 **例:**
 ```
-/claude READMEにインストール手順を追加してください
+@claude READMEにインストール手順を追加してください
 ```
 
 #### プルリクエストから指示を出す
 
-1. プルリクエストのコメントで `/claude [指示内容]` を投稿
+1. プルリクエストのコメントで `@claude [指示内容]` を投稿
 2. 自動的にClaude Codeが実行され、新しいPRが作成されます
 
 ## 機能
 
 ### 🤖 Claude Code 連携
-GitHub App による自動実行（`/install-github-app` でセットアップ）
+GitHub App による自動実行（設定済み）
 
 ### 🔄 自動化
 - **GitHub Actions**: PR自動アサイン、ラベル付け、コード品質チェック、Dependabot自動マージ  
@@ -50,9 +41,8 @@ GitHub App による自動実行（`/install-github-app` でセットアップ�
 
 ## 運用フロー
 
-1. **セットアップ**: `/install-github-app` で Claude Code GitHub App をインストール
-2. **タスク開始**: 「Claude Code タスク」テンプレートでイシュー作成  
-3. **実装指示**: `/claude [具体的な指示内容]` を記載
+1. **タスク開始**: 「Claude Code タスク」テンプレートでイシュー作成  
+2. **実装指示**: `@claude [具体的な指示内容]` を記載
 4. **自動実行**: Claude Code が自動実行してPR作成
 5. **レビュー・マージ**: 作成されたPRを確認してマージ
 

@@ -8,8 +8,8 @@ assignees: ''
 
 ## Claude Codeへの指示
 <!-- Claude Codeに実行してもらいたい作業を具体的に記載してください -->
-<!-- 例: /claude READMEにAPIの使用例を追加してください -->
-/claude 
+<!-- 例: @claude READMEにAPIの使用例を追加してください -->
+@claude 
 
 ## 背景・目的
 <!-- なぜこの作業が必要なのかを説明してください -->
